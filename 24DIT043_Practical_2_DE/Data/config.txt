@@ -1,0 +1,3 @@
+database=sqlite
+version=1.0
+host=localhost

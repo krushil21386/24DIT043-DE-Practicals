@@ -1,0 +1,125 @@
+# Data Engineering Practical 2: Data Pipelines, Validation, & Ingestion
+
+This repository contains a complete local data engineering pipeline designed to demonstrate data generation, profiling, validation, and database ingestion using Python, `pandas`, `sqlite3`, and `Faker`.
+
+The pipeline simulates standard ET/ELT workflows: generating mock customer data with intentional quality issues, profiling datasets, extracting corrupt/missing records to a quarantine folder, and ingesting clean records into an SQLite database with detailed logging.
+
+---
+
+## 📂 Directory Structure
+
+Below is the layout of the project, detailing the purpose of each directory and file:
+
+```text
+24DIT043_Practical_2_DE/
+├── Data/                      # Source datasets and pipeline configuration files
+│   ├── customers.csv          # Raw customer details (contains bad/null records)
+│   ├── api_logs.json          # Simulated JSON API logs with schema drift
+│   ├── config.txt             # Configuration file containing connection parameters
+│   └── Readme                 # README documenting the source datasets
+├── logs/                      # Audit and observability logs
+│   ├── ingestion.log          # Execution log capturing details of database writes
+│   └── README                 # README explaining logging and monitoring outputs
+├── quarantine/                # Quarantine zone for corrupt and invalid data
+│   ├── bad_records.csv        # Extracted customer records containing null/missing fields
+│   └── README                 # README detailing the data validation & quarantine policy
+├── Output/                    # Final processed output artifacts
+│   └── README                 # README describing downstream analytical exports
+├── customer.db                # Target SQLite database (automatically generated)
+├── generate_data.py           # Script to generate raw mock data (Faker & Pandas)
+├── profile_data.py            # Script to analyze and profile raw datasets
+├── validation.py              # Script to identify and extract bad records
+├── ingestion.py               # Script to load clean data into customer.db
+└── requirements.txt           # Project dependencies (pandas, faker)
+```
+
+---
+
+## ⚙️ Setup and Installation
+
+### Prerequisites
+Make sure you have Python 3 installed. It is recommended to use a virtual environment.
+
+1. **Clone and navigate to the repository:**
+   ```bash
+   cd 24DIT043_Practical_2_DE
+   ```
+
+2. **Create and activate a virtual environment:**
+   - **Windows (PowerShell):**
+     ```powershell
+     python -m venv .venv
+     .\.venv\Scripts\Activate.ps1
+     ```
+   - **Linux/macOS:**
+     ```bash
+     python -m venv .venv
+     source .venv/bin/activate
+     ```
+
+3. **Install dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+---
+
+## 🚀 Execution Guide
+
+Run the pipeline steps sequentially to observe data generation, validation, and storage.
+
+### Step 1: Generate Mock Datasets
+Generates a mock CSV, JSON, and config file inside the `Data/` folder.
+```bash
+python generate_data.py
+```
+*Creates: `Data/customers.csv`, `Data/api_logs.json`, and `Data/config.txt`.*
+
+### Step 2: Profile Data
+Examines columns, rows, types, null values, keys, and settings.
+```bash
+python profile_data.py
+```
+*Outputs: Console summary profiling all raw source files.*
+
+### Step 3: Validate Data
+Performs null checks on critical columns and quarantines failed records.
+```bash
+python validation.py
+```
+*Creates: `quarantine/bad_records.csv` containing invalid customer records.*
+
+### Step 4: Ingest Data
+Filters out bad records, creates/updates the database, and appends to the ingestion log.
+```bash
+python ingestion.py
+```
+*Creates: `customer.db` (with `customers` table) and appends to `logs/ingestion.log`.*
+
+---
+
+## 🛠️ Pipeline Component Breakdown
+
+### 1. `generate_data.py`
+- Generates 20 mock customer records via `Faker`.
+- Deliberately injects 3 invalid records:
+  - Row 3: Null `Email`
+  - Row 5: Null `City`
+  - Row 8: Null `CustomerID`
+- Generates JSON API log data with schema drift (deletes `city` key in the 4th API record).
+- Generates a basic system database configuration (`config.txt`).
+
+### 2. `profile_data.py`
+- Automates metadata inspection of source files.
+- Displays dataframe dimensions, inferred data types, null counts, JSON schema keys, and configuration file parameters directly to the console.
+
+### 3. `validation.py`
+- Inspects `customers.csv` row-by-row.
+- Isolates rows missing `CustomerID`, `Email`, or `City`.
+- Writes rejected records to `quarantine/bad_records.csv` for data curation.
+
+### 4. `ingestion.py`
+- Reads raw CSV data and drops records with nulls in critical columns.
+- Establishes a connection to the SQLite database `customer.db`.
+- Saves clean records into the `customers` database table (using `to_sql` with `if_exists="replace"`).
+- Writes runtime statuses to `logs/ingestion.log`.

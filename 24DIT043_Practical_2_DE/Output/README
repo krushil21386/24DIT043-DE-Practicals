@@ -1,0 +1,14 @@
+# 📤 Output Directory
+
+This directory is reserved for holding finalized outputs, computed analytical aggregates, dashboard-ready reporting datasets, or clean files exported from database tables.
+
+---
+
+## 🏗️ Downstream Ingestion & Target Data
+* While the primary pipeline saves the SQLite database as `customer.db` in the root directory for immediate local query access, any flat-file exports (e.g., reports, charts, or aggregated JSONs) can be placed in this folder.
+* **Target SQLite Table Schema (`customers`):**
+  * `CustomerID` (INTEGER / FLOAT)
+  * `Name` (TEXT)
+  * `Email` (TEXT)
+  * `City` (TEXT)
+* **Status:** Cleaned, deduplicated, and fully validated records only.
