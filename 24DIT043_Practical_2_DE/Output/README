@@ -12,3 +12,17 @@ This directory is reserved for holding finalized outputs, computed analytical ag
   * `Email` (TEXT)
   * `City` (TEXT)
 * **Status:** Cleaned, deduplicated, and fully validated records only.
+
+---
+
+## 📄 File Descriptions
+
+### `pipeline_output.txt`
+This file is generated when running the orchestrator script `main.py`. It consolidates the terminal outputs from all stages of the pipeline:
+1. **Data Generation** (`generate_data.py`)
+2. **Data Profiling** (`profile_data.py`)
+3. **Data Validation** (`validation.py`)
+4. **Data Ingestion** (`ingestion.py`)
+
+This file is automatically updated with a timestamp of the latest execution whenever `main.py` is run.
+

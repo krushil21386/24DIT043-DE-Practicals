@@ -24,8 +24,10 @@ Below is the layout of the project, detailing the purpose of each directory and 
 │   ├── bad_records.csv        # Extracted customer records containing null/missing fields
 │   └── README                 # README detailing the data validation & quarantine policy
 ├── Output/                    # Final processed output artifacts
+│   ├── pipeline_output.txt    # Consolidated terminal output report from all stages
 │   └── README                 # README describing downstream analytical exports
 ├── customer.db                # Target SQLite database (automatically generated)
+├── main.py                    # Orchestrator script to run all stages, print output, and log to pipeline_output.txt
 ├── generate_data.py           # Script to generate raw mock data (Faker & Pandas)
 ├── profile_data.py            # Script to analyze and profile raw datasets
 ├── validation.py              # Script to identify and extract bad records
@@ -66,30 +68,38 @@ Make sure you have Python 3 installed. It is recommended to use a virtual enviro
 
 ## 🚀 Execution Guide
 
-Run the pipeline steps sequentially to observe data generation, validation, and storage.
+You can run the entire pipeline at once using the orchestrator script, or run each step individually.
 
-### Step 1: Generate Mock Datasets
+### Option A: Run the Entire Pipeline (Recommended)
+This runs all steps of the pipeline, prints all outputs to the terminal, and consolidates them into a single file at `Output/pipeline_output.txt`:
+```bash
+python main.py
+```
+
+### Option B: Run Stage-by-Stage Sequentially
+
+#### Step 1: Generate Mock Datasets
 Generates a mock CSV, JSON, and config file inside the `Data/` folder.
 ```bash
 python generate_data.py
 ```
 *Creates: `Data/customers.csv`, `Data/api_logs.json`, and `Data/config.txt`.*
 
-### Step 2: Profile Data
+#### Step 2: Profile Data
 Examines columns, rows, types, null values, keys, and settings.
 ```bash
 python profile_data.py
 ```
 *Outputs: Console summary profiling all raw source files.*
 
-### Step 3: Validate Data
+#### Step 3: Validate Data
 Performs null checks on critical columns and quarantines failed records.
 ```bash
 python validation.py
 ```
 *Creates: `quarantine/bad_records.csv` containing invalid customer records.*
 
-### Step 4: Ingest Data
+#### Step 4: Ingest Data
 Filters out bad records, creates/updates the database, and appends to the ingestion log.
 ```bash
 python ingestion.py
@@ -97,6 +107,7 @@ python ingestion.py
 *Creates: `customer.db` (with `customers` table) and appends to `logs/ingestion.log`.*
 
 ---
+
 
 ## 🛠️ Pipeline Component Breakdown
 

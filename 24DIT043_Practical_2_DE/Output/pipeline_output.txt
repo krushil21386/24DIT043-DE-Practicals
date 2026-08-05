@@ -1,0 +1,88 @@
+======================================================================
+              DATA ENGINEERING PIPELINE ORCHESTRATOR
+======================================================================
+Execution Time : 2026-08-05 22:04:18
+Target Report  : Output/pipeline_output.txt
+======================================================================
+
+----------------------------------------------------------------------
+STAGE: GENERATE_DATA
+----------------------------------------------------------------------
+
+customers.csv generated
+api_logs.json generated
+config.txt generated
+
+Data Generation Completed Successfully!
+
+----------------------------------------------------------------------
+STAGE: PROFILE_DATA
+----------------------------------------------------------------------
+
+========== CUSTOMER DATA PROFILE ==========
+
+Rows : 20
+Columns : 4
+
+Data Types:
+CustomerID    float64
+Name           object
+Email          object
+City           object
+dtype: object
+
+Null Values:
+CustomerID    1
+Name          0
+Email         1
+City          1
+dtype: int64
+
+Schema:
+CustomerID -> float64
+Name -> object
+Email -> object
+City -> object
+
+========== API PROFILE ==========
+Total API Records : 10
+
+First Record Keys:
+id
+customer
+order
+
+========== CONFIG FILE ==========
+database=sqlite
+version=1.0
+host=localhost
+
+----------------------------------------------------------------------
+STAGE: VALIDATION
+----------------------------------------------------------------------
+
+========== VALIDATION REPORT ==========
+Total Records : 20
+Valid Records : 17
+Invalid Records : 3
+
+Invalid records saved in:
+C:\Users\5430\Downloads\Data-Engineering-Practicals-main\Data-Engineering-Practicals-main\24DIT043_Practical_2_DE\quarantine\bad_records.csv
+
+----------------------------------------------------------------------
+STAGE: INGESTION
+----------------------------------------------------------------------
+
+========== INGESTION REPORT ==========
+Database Created Successfully!
+Table Name : customers
+Valid Records Loaded : 17
+Invalid Records Skipped : 3
+Log File : logs/ingestion.log
+
+======================================================================
+PIPELINE EXECUTION COMPLETED SUCCESSFULLY!
+======================================================================
+
+Consolidated pipeline report successfully saved to: C:\Users\5430\Downloads\Data-Engineering-Practicals-main\Data-Engineering-Practicals-main\24DIT043_Practical_2_DE\Output\pipeline_output.txt
+
