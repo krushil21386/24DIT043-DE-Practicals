@@ -1,0 +1,55 @@
+// Kimball Star Schema ERD for dbdiagram.io
+Table Fact_Sales {
+  order_id integer [primary key]
+  date_key integer
+  customer_key integer
+  product_key integer
+  store_key integer
+  order_quantity integer
+  unit_price float
+  discount_amount float
+  tax_amount float
+  total_revenue float
+  profit_margin float
+}
+
+Table Dim_Date {
+  date_key integer [primary key]
+  full_date date
+  year integer
+  quarter integer
+  month integer
+  month_name varchar
+  day_of_week varchar
+}
+
+Table Dim_Customer {
+  customer_key integer [primary key]
+  natural_customer_id varchar
+  customer_name varchar
+  customer_email varchar
+  customer_segment varchar
+  is_active_scd integer
+  scd_start_date date
+}
+
+Table Dim_Product {
+  product_key integer [primary key]
+  product_sku varchar
+  product_name varchar
+  subcategory_name varchar
+  category_name varchar
+  manufacturer varchar
+}
+
+Table Dim_Store {
+  store_key integer [primary key]
+  store_name varchar
+  store_city varchar
+  store_country varchar
+}
+
+Ref: Fact_Sales.date_key > Dim_Date.date_key
+Ref: Fact_Sales.customer_key > Dim_Customer.customer_key
+Ref: Fact_Sales.product_key > Dim_Product.product_key
+Ref: Fact_Sales.store_key > Dim_Store.store_key
