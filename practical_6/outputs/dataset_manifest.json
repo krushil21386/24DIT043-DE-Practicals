@@ -1,0 +1,90 @@
+[
+    {
+        "object_id": "obj_001",
+        "object_name": "db_tables/live_orders_2026.parquet",
+        "size_gb": 450.0,
+        "created_at": "2026-09-20T10:00:00+00:00",
+        "last_accessed_at": "2026-10-02T08:00:00+00:00",
+        "days_since_last_access": 0,
+        "total_access_count_30d": 3450,
+        "current_tier": "Hot",
+        "content_type": "transactional_db"
+    },
+    {
+        "object_id": "obj_002",
+        "object_name": "db_tables/user_profiles_v2.parquet",
+        "size_gb": 120.0,
+        "created_at": "2026-09-07T10:00:00+00:00",
+        "last_accessed_at": "2026-10-01T10:00:00+00:00",
+        "days_since_last_access": 1,
+        "total_access_count_30d": 1200,
+        "current_tier": "Hot",
+        "content_type": "transactional_db"
+    },
+    {
+        "object_id": "obj_003",
+        "object_name": "logs/app_server_q2_2026.log",
+        "size_gb": 850.0,
+        "created_at": "2026-08-23T10:00:00+00:00",
+        "last_accessed_at": "2026-08-28T10:00:00+00:00",
+        "days_since_last_access": 35,
+        "total_access_count_30d": 4,
+        "current_tier": "Hot",
+        "content_type": "operational_log"
+    },
+    {
+        "object_id": "obj_004",
+        "object_name": "db_tables/historical_sales_q1_2026.csv",
+        "size_gb": 620.0,
+        "created_at": "2026-06-14T10:00:00+00:00",
+        "last_accessed_at": "2026-06-29T10:00:00+00:00",
+        "days_since_last_access": 95,
+        "total_access_count_30d": 0,
+        "current_tier": "Warm",
+        "content_type": "historical_table"
+    },
+    {
+        "object_id": "obj_005",
+        "object_name": "db_tables/customer_feedback_2025.csv",
+        "size_gb": 310.0,
+        "created_at": "2026-05-15T10:00:00+00:00",
+        "last_accessed_at": "2026-06-04T10:00:00+00:00",
+        "days_since_last_access": 120,
+        "total_access_count_30d": 0,
+        "current_tier": "Hot",
+        "content_type": "historical_table"
+    },
+    {
+        "object_id": "obj_006",
+        "object_name": "audit/compliance_records_2025_q4.tar.gz",
+        "size_gb": 1250.0,
+        "created_at": "2026-02-24T10:00:00+00:00",
+        "last_accessed_at": "2026-04-05T10:00:00+00:00",
+        "days_since_last_access": 180,
+        "total_access_count_30d": 0,
+        "current_tier": "Warm",
+        "content_type": "audit_archive"
+    },
+    {
+        "object_id": "obj_007",
+        "object_name": "audit/security_scans_2025_q3.tar.gz",
+        "size_gb": 980.0,
+        "created_at": "2025-11-26T10:00:00+00:00",
+        "last_accessed_at": "2026-01-05T10:00:00+00:00",
+        "days_since_last_access": 270,
+        "total_access_count_30d": 0,
+        "current_tier": "Cold",
+        "content_type": "audit_archive"
+    },
+    {
+        "object_id": "obj_008",
+        "object_name": "temp/staging_etl_dump_2025.tmp",
+        "size_gb": 540.0,
+        "created_at": "2025-08-28T10:00:00+00:00",
+        "last_accessed_at": "2025-09-07T10:00:00+00:00",
+        "days_since_last_access": 390,
+        "total_access_count_30d": 0,
+        "current_tier": "Cold",
+        "content_type": "temporary_dump"
+    }
+]

@@ -1,0 +1,61 @@
+{
+  "Rules": [
+    {
+      "ID": "TransitionToWarmInfrequentAccess",
+      "Status": "Enabled",
+      "Filter": {
+        "Prefix": "logs/"
+      },
+      "Transitions": [
+        {
+          "Days": 30,
+          "StorageClass": "WARM_INFREQUENT"
+        }
+      ]
+    },
+    {
+      "ID": "DemoteInactiveDataTablesToCold",
+      "Status": "Enabled",
+      "Filter": {
+        "Prefix": "db_tables/"
+      },
+      "Transitions": [
+        {
+          "Days": 30,
+          "StorageClass": "WARM_INFREQUENT"
+        },
+        {
+          "Days": 90,
+          "StorageClass": "COLD_DEEP_ARCHIVE"
+        }
+      ]
+    },
+    {
+      "ID": "ArchiveComplianceAuditRecords",
+      "Status": "Enabled",
+      "Filter": {
+        "Prefix": "audit/"
+      },
+      "Transitions": [
+        {
+          "Days": 60,
+          "StorageClass": "WARM_INFREQUENT"
+        },
+        {
+          "Days": 180,
+          "StorageClass": "COLD_DEEP_ARCHIVE"
+        }
+      ]
+    },
+    {
+      "ID": "ExpireTemporaryStagingDumps",
+      "Status": "Enabled",
+      "Filter": {
+        "Prefix": "temp/"
+      },
+      "Expiration": {
+        "Days": 365
+      }
+    }
+  ]
+}

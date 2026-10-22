@@ -1,0 +1,22 @@
+[
+    {
+        "timestamp": "2026-10-02T10:15:00Z",
+        "api_action": "PutObjectStorageClass",
+        "bucket": "enterprise-datalake",
+        "key": "db_tables/historical_sales_q1_2026.csv",
+        "previous_storage_tier": "Warm",
+        "new_storage_tier": "COLD_DEEP_ARCHIVE",
+        "status": "200 OK (SUCCESS)",
+        "demotion_reason": "Table inactive for 95 days (> 90 days retention threshold)"
+    },
+    {
+        "timestamp": "2026-10-02T10:15:00Z",
+        "api_action": "PutObjectStorageClass",
+        "bucket": "enterprise-datalake",
+        "key": "db_tables/customer_feedback_2025.csv",
+        "previous_storage_tier": "Hot",
+        "new_storage_tier": "COLD_DEEP_ARCHIVE",
+        "status": "200 OK (SUCCESS)",
+        "demotion_reason": "Table inactive for 120 days (> 90 days retention threshold)"
+    }
+]

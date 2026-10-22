@@ -1,0 +1,9 @@
+object_id,object_name,size_gb,created_at,last_accessed_at,days_since_last_access,total_access_count_30d,current_tier,content_type
+obj_001,db_tables/live_orders_2026.parquet,450.0,2026-09-20T10:00:00+00:00,2026-10-02T08:00:00+00:00,0,3450,Hot,transactional_db
+obj_002,db_tables/user_profiles_v2.parquet,120.0,2026-09-07T10:00:00+00:00,2026-10-01T10:00:00+00:00,1,1200,Hot,transactional_db
+obj_003,logs/app_server_q2_2026.log,850.0,2026-08-23T10:00:00+00:00,2026-08-28T10:00:00+00:00,35,4,Hot,operational_log
+obj_004,db_tables/historical_sales_q1_2026.csv,620.0,2026-06-14T10:00:00+00:00,2026-06-29T10:00:00+00:00,95,0,Warm,historical_table
+obj_005,db_tables/customer_feedback_2025.csv,310.0,2026-05-15T10:00:00+00:00,2026-06-04T10:00:00+00:00,120,0,Hot,historical_table
+obj_006,audit/compliance_records_2025_q4.tar.gz,1250.0,2026-02-24T10:00:00+00:00,2026-04-05T10:00:00+00:00,180,0,Warm,audit_archive
+obj_007,audit/security_scans_2025_q3.tar.gz,980.0,2025-11-26T10:00:00+00:00,2026-01-05T10:00:00+00:00,270,0,Cold,audit_archive
+obj_008,temp/staging_etl_dump_2025.tmp,540.0,2025-08-28T10:00:00+00:00,2025-09-07T10:00:00+00:00,390,0,Cold,temporary_dump
